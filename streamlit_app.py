@@ -5,22 +5,22 @@ from score_analysis import compare_two_averages
 
 # Page configuration
 st.set_page_config(
-    page_title="Score Distribution Analyzer",
+    page_title="What Difference Does It Make?",
     page_icon="📊",
     layout="wide"
 )
 
 # Title and description
-st.title("📊 Score Distribution Analyzer")
+st.title("📊 What Difference Does It Make?")
 st.markdown("""
-This tool compares the expected distribution of scores (1-5 scale) between two different average ratings.
-It calculates the average count of each score across all possible distributions using multinomial coefficients.
+This app compares the expected distribution of scores (1-5 scale) between two different average ratings.
+It shows the real difference between the average scores in terms of what's changed in the counts of 1s, 2s, ..., and 5s.
 """)
 
 st.divider()
 
 # Input section
-st.subheader("Input Parameters")
+st.subheader("Inputs")
 
 # Number of respondents input - using column to make it more compact
 col_resp, _ = st.columns([1, 3])
@@ -70,7 +70,7 @@ st.divider()
 # Run analysis button - centered and compact
 col1, col2, col3 = st.columns([1, 1, 1])
 with col2:
-    analyze_button = st.button("🔍 Analyze Distribution", type="primary")
+    analyze_button = st.button("🔍 Calculate the Difference", type="primary")
 
 if analyze_button:
     
@@ -112,6 +112,6 @@ st.markdown("""
 
 ### Notes:
 - Not all averages are possible with a given number of respondents (the sum must be an integer)
-- When an average is impossible, the tool suggests the closest valid alternatives
+- When an average is impossible, the app suggests the closest valid alternatives
 - Results are weighted by the number of permutations each distribution can generate
 """)
