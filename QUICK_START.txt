@@ -1,0 +1,77 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                    QUICK START GUIDE                             ║
+║            Score Distribution Analyzer - Streamlit App           ║
+╚══════════════════════════════════════════════════════════════════╝
+
+⚡ GET STARTED IN 3 STEPS:
+
+1️⃣  INSTALL STREAMLIT
+   Open your terminal and run:
+   
+   pip install streamlit
+
+2️⃣  NAVIGATE TO YOUR FILES
+   Make sure these files are in the same folder:
+   • streamlit_app.py
+   • score_analysis.py
+   • requirements.txt
+   
+   Then navigate there:
+   cd path/to/your-folder
+
+3️⃣  RUN THE APP
+   
+   streamlit run streamlit_app.py
+   
+   The app will automatically open in your browser! 🎉
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 WHAT YOU'LL SEE:
+
+The web app has a clean interface with:
+
+┌─────────────────────────────────────────────────────────────┐
+│  📊 Score Distribution Analyzer                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  Number of Respondents: [____10____]                        │
+│                                                               │
+│  From Average Score: [_3.0_]  →  To Average Score: [_3.5_] │
+│                                                               │
+│        [🔍 Analyze Distribution]                             │
+│                                                               │
+│  Results will appear here showing:                           │
+│  • Expected count of each score (1-5)                        │
+│  • Percentages of population                                 │
+│  • Differences between the two averages                      │
+└─────────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 USING THE APP:
+
+• Enter your values in the input boxes
+• Click "Analyze Distribution"
+• View the detailed comparison table
+• Experiment with different values!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🛑 TO STOP:
+   Press Ctrl+C in your terminal
+
+📖 FOR MORE DETAILS:
+   See README.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 TIPS:
+• The app auto-reloads when you save changes to the code
+• Try impossible averages to see the suggestions feature
+• Use the sidebar menu to adjust settings
+• Share the Network URL with colleagues on your WiFi
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Need help? Check README.md for troubleshooting!

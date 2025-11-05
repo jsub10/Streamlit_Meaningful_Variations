@@ -1,0 +1,71 @@
+═══════════════════════════════════════════════════════════════════════
+                        EXAMPLE OUTPUT
+        What You'll See When You Run the Analysis
+═══════════════════════════════════════════════════════════════════════
+
+Let's say you enter:
+• Number of Respondents: 10
+• From Average Score: 3.0
+• To Average Score: 3.5
+
+When you click "Analyze Distribution", you'll see:
+
+───────────────────────────────────────────────────────────────────────
+
+Comparing average 3.0 vs 3.5 with 10 respondents
+======================================================================
+
+Average counts across all distributions:
+
+Score    Avg 3.0      %        Avg 3.5      %        Diff         Diff %    
+--------------------------------------------------------------------------------
+1        1.8973       18.97    1.0319       10.32         -0.8654      -8.65
+2        2.0506       20.51    1.4709       14.71         -0.5797      -5.80
+3        2.1043       21.04    1.9760       19.76         -0.1283      -1.28
+4        2.0506       20.51    2.5079       25.08         +0.4573      +4.57
+5        1.8973       18.97    3.0133       30.13         +1.1161     +11.16
+
+Total:   10.0000      100.00   10.0000      100.00  
+
+================================================================================
+Interpretation:
+Moving from average 3.0 to 3.5:
+  • fewer 1s (difference: -0.8654, -8.65%)
+  • fewer 2s (difference: -0.5797, -5.80%)
+  • fewer 3s (difference: -0.1283, -1.28%)
+  • more 4s (difference: +0.4573, +4.57%)
+  • more 5s (difference: +1.1161, +11.16%)
+
+───────────────────────────────────────────────────────────────────────
+
+WHAT THIS MEANS:
+
+📊 The table shows that when you move from an average of 3.0 to 3.5:
+
+   • You'll have about 0.87 FEWER 1-star ratings (8.65% less)
+   • You'll have about 0.58 FEWER 2-star ratings (5.80% less)
+   • You'll have about 0.13 FEWER 3-star ratings (1.28% less)
+   • You'll have about 0.46 MORE 4-star ratings (4.57% more)
+   • You'll have about 1.12 MORE 5-star ratings (11.16% more)
+
+These are EXPECTED AVERAGES across all possible distributions that 
+achieve those averages, weighted by how many ways each distribution 
+can occur.
+
+───────────────────────────────────────────────────────────────────────
+
+EXAMPLE WITH IMPOSSIBLE AVERAGE:
+
+If you try average 3.14 with 10 respondents (impossible because 
+3.14 × 10 = 31.4, not an integer):
+
+Average 3.14 is not possible: Average 3.14 is not possible with 10 
+respondents (sum must be integer)
+  → Closest lower average: 3.1
+  → Closest higher average: 3.2
+
+Cannot complete comparison - one or both averages are not possible.
+
+The app helps you find valid alternatives! 🎯
+
+═══════════════════════════════════════════════════════════════════════
