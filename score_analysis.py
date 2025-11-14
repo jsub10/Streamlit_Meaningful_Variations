@@ -1,5 +1,7 @@
 from math import factorial
 import os
+import matplotlib.pyplot as plt
+import numpy as np
 
 def count_permutations_for_distribution(distribution, n):
     """Calculate number of permutations for a given distribution using multinomial coefficient"""
