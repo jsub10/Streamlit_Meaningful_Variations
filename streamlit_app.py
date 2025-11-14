@@ -82,7 +82,7 @@ if analyze_button:
     
     try:
         # Call the function
-        compare_two_averages(int(n_respondents), avg1, avg2)
+        compare_two_averages_viz(int(n_respondents), avg1, avg2)
         
         # Get the output
         output = captured_output.getvalue()

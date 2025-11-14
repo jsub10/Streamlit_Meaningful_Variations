@@ -155,3 +155,106 @@ def compare_two_averages(n_respondents, avg1, avg2):
             direction = "more" if diff > 0 else "fewer"
             diff_pct = (diff / n_respondents) * 100
             print(f"  • {direction} {score}s (difference: {diff:+.4f}, {diff_pct:+.2f}%)")
+
+
+def compare_two_averages_viz(n_respondents, avg1, avg2, show_plot=True):
+    """Compare the average distributions for two different average scores"""
+    
+    print(f"Comparing average {avg1} vs {avg2} with {n_respondents} respondents")
+    print("=" * 70)
+    
+    # Get average distribution for first average
+    result1 = calculate_average_distribution(n_respondents, avg1)
+    if result1[1] is not None:
+        print(f"\nAverage {avg1}: {result1[1]}")
+        return
+    avg_dist1 = result1[0]
+    
+    # Get average distribution for second average
+    result2 = calculate_average_distribution(n_respondents, avg2)
+    if result2[1] is not None:
+        print(f"\nAverage {avg2}: {result2[1]}")
+        return
+    avg_dist2 = result2[0]
+    
+    # Display results
+    print(f"\nAverage counts across all distributions:\n")
+    print(f"{'Score':<10} {'Avg ' + str(avg1):<15} {'Avg ' + str(avg2):<15} {'Difference':<15}")
+    print("-" * 70)
+    
+    for score in range(1, 6):
+        count1 = avg_dist1[score-1]
+        count2 = avg_dist2[score-1]
+        diff = count2 - count1
+        print(f"{score:<10} {count1:<15.4f} {count2:<15.4f} {diff:+15.4f}")
+    
+    print(f"\nTotal:     {sum(avg_dist1):<15.4f} {sum(avg_dist2):<15.4f}")
+    
+    # Summary
+    print("\n" + "=" * 70)
+    print("Interpretation:")
+    print(f"Moving from average {avg1} to {avg2}:")
+    for score in range(1, 6):
+        diff = avg_dist2[score-1] - avg_dist1[score-1]
+        if abs(diff) > 0.01:  # Only show meaningful differences
+            direction = "more" if diff > 0 else "fewer"
+            print(f"  • {direction} {score}s (difference: {diff:+.4f})")
+    
+    # Create visualization
+    if show_plot:
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+        
+        scores = [1, 2, 3, 4, 5]
+        x = np.arange(len(scores))
+        width = 0.35
+        
+        # Plot 1: Side-by-side comparison
+        bars1 = ax1.bar(x - width/2, avg_dist1, width, label=f'Average {avg1}', alpha=0.8)
+        bars2 = ax1.bar(x + width/2, avg_dist2, width, label=f'Average {avg2}', alpha=0.8)
+        
+        ax1.set_xlabel('Score', fontsize=12, fontweight='bold')
+        ax1.set_ylabel('Average Count', fontsize=12, fontweight='bold')
+        ax1.set_title(f'Score Distribution Comparison\n({n_respondents} respondents)', 
+                     fontsize=14, fontweight='bold')
+        ax1.set_xticks(x)
+        ax1.set_xticklabels(scores)
+        ax1.legend()
+        ax1.grid(axis='y', alpha=0.3)
+        
+        # Add value labels on bars
+        for bars in [bars1, bars2]:
+            for bar in bars:
+                height = bar.get_height()
+                ax1.text(bar.get_x() + bar.get_width()/2., height,
+                        f'{height:.2f}',
+                        ha='center', va='bottom', fontsize=9)
+        
+        # Plot 2: Difference plot
+        differences = [avg_dist2[i] - avg_dist1[i] for i in range(5)]
+        colors = ['red' if d < 0 else 'green' for d in differences]
+        bars3 = ax2.bar(x, differences, color=colors, alpha=0.7)
+        
+        ax2.set_xlabel('Score', fontsize=12, fontweight='bold')
+        ax2.set_ylabel('Difference in Count', fontsize=12, fontweight='bold')
+        ax2.set_title(f'Change from Avg {avg1} to Avg {avg2}\n(Green = increase, Red = decrease)', 
+                     fontsize=14, fontweight='bold')
+        ax2.set_xticks(x)
+        ax2.set_xticklabels(scores)
+        ax2.axhline(y=0, color='black', linestyle='-', linewidth=0.8)
+        ax2.grid(axis='y', alpha=0.3)
+        
+        # Add value labels on difference bars
+        for bar in bars3:
+            height = bar.get_height()
+            ax2.text(bar.get_x() + bar.get_width()/2., height,
+                    f'{height:+.2f}',
+                    ha='center', va='bottom' if height > 0 else 'top', fontsize=9)
+        
+        plt.tight_layout()
+        
+        # Save the plot
+        filename = f'comparison_avg{avg1}_vs_avg{avg2}_n{n_respondents}.png'
+        plt.savefig(filename, dpi=150, bbox_inches='tight')
+        print(f"\nVisualization saved as: {filename}")
+        
+        plt.show()
