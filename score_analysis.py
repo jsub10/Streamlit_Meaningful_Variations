@@ -159,7 +159,7 @@ def compare_two_averages(n_respondents, avg1, avg2):
             print(f"  • {direction} {score}s (difference: {diff:+.4f}, {diff_pct:+.2f}%)")
 
 
-def compare_two_averages_viz(n_respondents, avg1, avg2, show_plot=True):
+def compare_two_averages_viz(n_respondents, avg1, avg2, show_plot=True, save_plot=False):
     """Compare the average distributions for two different average scores"""
     
     print(f"Comparing average {avg1} vs {avg2} with {n_respondents} respondents")
@@ -254,9 +254,10 @@ def compare_two_averages_viz(n_respondents, avg1, avg2, show_plot=True):
         
         plt.tight_layout()
         
-        # Save the plot
-        filename = f'comparison_avg{avg1}_vs_avg{avg2}_n{n_respondents}.png'
-        plt.savefig(filename, dpi=150, bbox_inches='tight')
-        print(f"\nVisualization saved as: {filename}")
+        if save_plot == True:
+            # Save the plot
+            filename = f'comparison_avg{avg1}_vs_avg{avg2}_n{n_respondents}.png'
+            plt.savefig(filename, dpi=150, bbox_inches='tight')
+            print(f"\nVisualization saved as: {filename}")
         
         plt.show()
